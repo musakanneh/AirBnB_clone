@@ -1,4 +1,4 @@
-# AirBnB Clone ― The ALX-Holberton B&B
+# AirBnB Clone ― The ALX-Holberton BnB
 ![Optional Text](hbnb.png)
 ## Description of the project
 The ALX-Holberton B&B sums up the implementation of my four months of student at the ALX-Holberton School.
@@ -8,8 +8,18 @@ The goal of the project is to deploy a replica of the AirBnB website ― which w
 - A comprehensive database to manage the backend functionalities
 - An API that provides a communication interface between the front and backend of the system.
 
+### General concepts in review
+- How to create a Python package
+- How to create a command interpreter in Python using the cmd module
+- What is Unit testing and how to implement it in a large project
+- How to serialize and deserialize a Class
+- How to write and read a JSON file
+- How to manage datetime
+- What is an UUID
+- What is *args and how to use it
+- What is **kwargs and how to use it
+- How to handle named arguments in a function
 The project's implementation will happen in the following phases:
-
 ## Phase One
 The first phase is to manipulate a powerful storage system to give an abstraction between objects and how they are stored and persisted. To achieve this, the author will:
 - Create a data model
