@@ -1,7 +1,7 @@
 # AirBnB Clone ― The ALX-Holberton B&B
-![alt text](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU65GPZGY3%2F20210215%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210215T155922Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=1dc148b47c29c82b2b946443c733e3f4f41fe666af5f78d03e09c1af5a4a3a40)
+![Optional Text](hbnb.png)
 ## Description of the project
-The ALX-Holberton B&B represents sums up the implementation of my four months of student at the ALX-Holberton School.
+The ALX-Holberton B&B sums up the implementation of my four months of student at the ALX-Holberton School.
 The goal of the project is to deploy a replica of the AirBnB website ― which we call hbnb. The final version of this project have:
 - A command interpreter to manipulate data without a visual interface, like a shell (for development and debugging)
 - A website (front-end) with static and dynamic functionalities
@@ -10,9 +10,13 @@ The goal of the project is to deploy a replica of the AirBnB website ― which w
 
 The project's implementation will happen in the following phases:
 
+## Phase One
+The first phase is to manipulate a powerful storage system. This storage engine will give an abstraction between objects and how they are stored and persisted.
+- Create a data model
+- Manage (create, update, destroy, etc) objects via a console/command interpreter
+- Store and persist objects to files (JSON files)
 
-
-## Description of the command interpreter:
+## Description of the command interpreter
 
 - How to start it
 - How to use it
