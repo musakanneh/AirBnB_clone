@@ -19,6 +19,7 @@ The goal of the project is to deploy a replica of the AirBnB website ― which w
 - What is *args and how to use it
 - What is **kwargs and how to use it
 - How to handle named arguments in a function
+
 The project's implementation will happen in the following phases:
 ## Phase One
 The first phase is to manipulate a powerful storage system to give an abstraction between objects and how they are stored and persisted. To achieve this, the author will:
