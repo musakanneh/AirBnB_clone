@@ -2,7 +2,7 @@
 ![Optional Text](hbnb.png)
 ## Description of the project
 The ALX-Holberton B&B sums up the implementation of my four months of student at the ALX-Holberton School.
-The goal of the project is to deploy a replica of the AirBnB website ― which we call hbnb. The final version of this project have:
+The goal of the project is to deploy a replica of the AirBnB website ― which we call hbnb. The final version of this project will have:
 - A command interpreter to manipulate data without a visual interface, like a shell (for development and debugging)
 - A website (front-end) with static and dynamic functionalities
 - A comprehensive database to manage the backend functionalities
