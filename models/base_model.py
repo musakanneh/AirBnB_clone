@@ -32,5 +32,24 @@ class BaseModel:
                     setattr(self, key, value)
 
     def __str__(self):
-        """Public instance method"""
-        pass
+        """String method for base class"""
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+
+    def save(self):
+        """Updates the public instance attribute
+        updated_at with the current datetime
+
+        """
+        self.updated_at = datetime.utcnow()
+        models.storage.save()
+
+    def to_dict(self):
+        """Method returns a dictionary containing all 
+        keys/values of __dict__ instance
+
+        """
+        my_dict = dict(self.__dict__)
+        my_dict['__class__'] = self.__class__.__name__
+        my_dict['created_at'] = datetime.isoformat(self.created_at)
+        my_dict['updated_at'] = datetime.isoformat(self.updated_at)
+        return my_dict
