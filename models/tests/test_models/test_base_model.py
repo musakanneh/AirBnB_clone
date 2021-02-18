@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Test suits for base model"""
+"""
+Test suits for base model
+"""
 
 import os
 import re
@@ -18,7 +20,7 @@ class TestBaseModel(unittest.TestCase):
         my_model.name = "Holberton"
         my_model.number = 89
         self.assertEqual(
-            [my_model.name, my_model.number], ["ALX", 89])
+                [my_model.name, my_model.number], ["ALX", 89])
 
     def test_init(self):
         """Tests if created_at, update_at and id exists"""
