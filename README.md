@@ -23,6 +23,11 @@ The goal of the project is to deploy a replica of the AirBnB website ― which w
 The project's implementation will happen in the following phases:
 ## Phase One
 The first phase is to manipulate a powerful storage system to give an abstraction between objects and how they are stored and persisted. To achieve this, the author will:
+- put in place a parent class (called ```BaseModel```) to take care of the initialization, serialization and deserialization of your future instances
+- create a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> file
+- create all classes used for AirBnB (```User, State, City, Place…```) that inherit from ```BaseModel```
+- create the first abstracted storage engine of the project: File storage.
+- create all unittests to validate all our classes and storage engine
 - Create a data model
 - Manage (create, update, destroy, etc) objects via a console/command interpreter
 - Store and persist objects to files (JSON files)

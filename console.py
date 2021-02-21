@@ -29,15 +29,15 @@ class HBNBCommand(cmd.Cmd):
             num_of_args(int): number of input arguments
 
         """
-        classes = ["BaseModel", "User", "State", "City", "Amenity",
-                "Place", "Review"]
+        classes = ["BaseModel", "User", "State", "City",
+                   "Amenity", "Place", "Review"]
 
         msg = ["** class name missing **",
-                "** class doesn't exist **",
-                "** instance id missing **",
-                "** no instance found **",
-                "** attribute name missing **",
-                "** value missing **"]
+               "** class doesn't exist **",
+               "** instance id missing **",
+               "** no instance found **",
+               "** attribute name missing **",
+               "** value missing **"]
         if not line:
             print(msg[0])
             return 1
@@ -125,8 +125,8 @@ class HBNBCommand(cmd.Cmd):
         Prints a string representation of an instance.
         Arguments to enter with command: <class name> <id>
         Example: 'show User 1234-1234-1234'
-        """
 
+        """
         if (self.my_errors(line, 2) == 1):
             return
         args = line.split()
@@ -168,8 +168,8 @@ class HBNBCommand(cmd.Cmd):
         print([str(v) for v in d.values() if v.__class__.__name__ == args[0]])
 
     def do_update(self, line):
-        """Updates an instance based on the class name and id by adding or
-        updating an attribute
+        """Updates an instance based on the class name
+        and id by adding or updating an attribute
         Arguments to enter with command:
         <class name> <id> <attribute name> "<attribute value>"
         Example: 'update User 1234-1234-1234 my_name "Bob"'
@@ -221,34 +221,37 @@ class HBNBCommand(cmd.Cmd):
 
         """
         names = ["BaseModel", "User", "State", "City", "Amenity",
-                "Place", "Review"]
+                 "Place", "Review"]
+
         commands = {"all": self.do_all,
-                "count": self.my_count,
-                "show": self.do_show,
-                "destroy": self.do_destroy,
-                "update": self.do_update}
+                    "count": self.my_count,
+                    "show": self.do_show,
+                    "destroy": self.do_destroy,
+                    "update": self.do_update}
+
         args = re.match(r"^(\w+)\.(\w+)\((.*)\)", line)
         if args:
             args = args.groups()
         if not args or len(args) < 2 or args[0] not in names \
                 or args[1] not in commands.keys():
-                    super().default(line)
+            super().default(line)
         return
-    if args[1] in ["all", "count"]:
-        commands[args[1]](args[0])
-    elif args[1] in ["show", "destroy"]:
-        commands[args[1]](args[0] + ' ' + args[2])
-    elif args[1] == "update":
-        params = re.match(r"\"(.+?)\", (.+)", args[2])
+
+        if args[1] in ["all", "count"]:
+            commands[args[1]](args[0])
+        elif args[1] in ["show", "destroy"]:
+            commands[args[1]](args[0] + ' ' + args[2])
+        elif args[1] == "update":
+            params = re.match(r"\"(.+?)\", (.+)", args[2])
             if params.groups()[1][0] == '{':
                 dic_p = eval(params.groups()[1])
                 for k, v in dic_p.items():
                     commands[args[1]](args[0] + " " + params.groups()[0] +
-                            " " + k + " " + str(v))
+                                      " " + k + " " + str(v))
             else:
                 rest = params.groups()[1].split(", ")
                 commands[args[1]](args[0] + " " + params.groups()[0] + " " +
-                        rest[0] + " " + rest[1])
+                                  rest[0] + " " + rest[1])
 
 
 if __name__ == '__main__':

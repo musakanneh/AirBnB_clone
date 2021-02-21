@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""Module file_storage serializes and deserializes JSON types"""
+"""
+Module file_storage serializes and
+deserializes JSON types
+"""
 
 import json
 from models.base_model import BaseModel
@@ -30,13 +33,16 @@ class FileStorage:
         self.__objects[object.__class__.__name__ + '.' + str(object)] = object
 
     def save(self):
-        """serializes __objects to the JSON file (path: __file_path)"""
+        """serializes __objects to the JSON file
+        (path: __file_path)
+
+        """
         with open(self.__file_path, 'w+') as f:
             json.dump(
-                {
-                    k: v.to_dict() for k, v in self.__objects.items()
-                }, f
-            )
+                    {
+                        k: v.to_dict() for k, v in self.__objects.items()
+                        }, f
+                    )
 
     def reload(self):
         """deserializes the JSON file to __objects, if the JSON

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-"""Custombase class for the entire project"""
-
+"""
+Custom base class for the entire project
+"""
 
 from uuid import uuid4
 from datetime import datetime
@@ -33,7 +34,8 @@ class BaseModel:
 
     def __str__(self):
         """String method for base class"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
         """Updates the public instance attribute
