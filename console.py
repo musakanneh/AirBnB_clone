@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
         """Displays error messages to user
 
         Args:
-            line(any): line inputs
+            line(any): gets user input using command line
             num_of_args(int): number of input arguments
 
         Description:
