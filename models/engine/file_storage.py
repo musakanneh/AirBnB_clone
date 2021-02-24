@@ -27,7 +27,7 @@ class FileStorage:
         <object class name>.id
 
         Args:
-            object(any): object to write
+            object(obj): object to write
 
         """
         self.__objects[object.__class__.__name__ + '.' + str(object)] = object
@@ -38,11 +38,8 @@ class FileStorage:
 
         """
         with open(self.__file_path, 'w+') as f:
-            json.dump(
-                    {
-                        k: v.to_dict() for k, v in self.__objects.items()
-                        }, f
-                    )
+            json.dump({k: v.to_dict() for k, v in self.__objects.items()
+                        }, f)
 
     def reload(self):
         """deserializes the JSON file to __objects, if the JSON

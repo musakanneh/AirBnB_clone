@@ -6,7 +6,7 @@ Contains the entry point of the command interpreter
 import cmd
 import json
 import re
-# from models import storage
+from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -124,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """Prints a string representation of an instance.
-        
+
         Args:
             line(line): to enter with command <class name> <id>
             Example: 'show User 1234-1234-1234'
@@ -141,7 +141,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """Deletes an instance of a certain class.
-        
+
         Args:
             line(args): to enter with command: <class name> <id>
             Example: 'destroy User 1234-1234-1234'
