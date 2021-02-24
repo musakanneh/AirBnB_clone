@@ -21,12 +21,16 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
-    def handle_errors(self, line, num_of_agrs):
+    def my_errors(self, line, num_of_args):
         """Displays error messages to user
 
         Args:
             line(any): line inputs
             num_of_args(int): number of input arguments
+
+        Description:
+            Displays output to the use based on
+            the input commands. 
 
         """
         classes = ["BaseModel", "User", "State", "City",
@@ -42,12 +46,12 @@ class HBNBCommand(cmd.Cmd):
             print(msg[0])
             return 1
         args = line.split()
-        if num_of_agrs >= 1 and args[0] not in classes:
+        if num_of_args >= 1 and args[0] not in classes:
             print(msg[1])
             return 1
-        elif num_of_agrs == 1:
+        elif num_of_args == 1:
             return 0
-        if num_of_agrs >= 2 and len(args) < 2:
+        if num_of_args >= 2 and len(args) < 2:
             print(msg[2])
             return 1
         d = storage.all()
@@ -56,19 +60,18 @@ class HBNBCommand(cmd.Cmd):
             if args[i][0] == '"':
                 args[i] = args[i].replace('"', "")
         key = args[0] + '.' + args[1]
-        if num_of_agrs >= 2 and key not in d:
+        if num_of_args >= 2 and key not in d:
             print(msg[3])
             return 1
-        elif num_of_agrs == 2:
+        elif num_of_args == 2:
             return 0
-        if num_of_agrs >= 4 and len(args) < 3:
+        if num_of_args >= 4 and len(args) < 3:
             print(msg[4])
             return 1
-        if num_of_agrs >= 4 and len(args) < 4:
+        if num_of_args >= 4 and len(args) < 4:
             print(msg[5])
             return 1
-        else:
-            return 0
+        return 0
 
     def handle_empty_line(self, line):
         """Eliminates empty lines"""
@@ -85,11 +88,10 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, line):
         """ Creates a new instance of @cls_name class,
         and prints the new instance's ID.
-        Arguments to enter with command: <class name>
-        Example: 'create User'
 
         Args:
-            line(any): input line from user
+            to enter with command: <class name>
+            Example: 'create User'
 
         """
         if (self.my_errors(line, 4) == 1):
@@ -121,10 +123,11 @@ class HBNBCommand(cmd.Cmd):
         print(object.id)
 
     def do_show(self, line):
-        """
-        Prints a string representation of an instance.
-        Arguments to enter with command: <class name> <id>
-        Example: 'show User 1234-1234-1234'
+        """Prints a string representation of an instance.
+        
+        Args:
+            line(line): to enter with command <class name> <id>
+            Example: 'show User 1234-1234-1234'
 
         """
         if (self.my_errors(line, 2) == 1):
@@ -137,10 +140,12 @@ class HBNBCommand(cmd.Cmd):
         print(d[key])
 
     def do_destroy(self, line):
-        """
-        Deletes an instance of a certain class.
-        Arguments to enter with command: <class name> <id>
-        Example: 'destroy User 1234-1234-1234'
+        """Deletes an instance of a certain class.
+        
+        Args:
+            line(args): to enter with command: <class name> <id>
+            Example: 'destroy User 1234-1234-1234'
+
         """
         if (self.my_errors(line, 2) == 1):
             return
@@ -153,10 +158,12 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, line):
-        """
-        Shows all instances, or instances of a certain class
-        Arguments to enter with command (optional): <class name>
-        Example: 'all' OR 'all User'
+        """ Shows all instances, or instances of a certain class
+
+        Args(optional): 
+            line(args): enter with command (optional): <class name>
+            Example: 'all' OR 'all User'
+
         """
         d = storage.all()
         if not line:
@@ -170,9 +177,11 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, line):
         """Updates an instance based on the class name
         and id by adding or updating an attribute
-        Arguments to enter with command:
-        <class name> <id> <attribute name> "<attribute value>"
-        Example: 'update User 1234-1234-1234 my_name "Bob"'
+
+        Args:
+            line(args): receives the commands:
+            <class name> <id> <attribute name> "<attribute value>"
+            Example: 'update User 1234-1234-1234 my_name "Bob"'
 
         """
         if (self.my_errors(line, 4) == 1):
@@ -218,6 +227,11 @@ class HBNBCommand(cmd.Cmd):
         <class name>.destroy(<id>)
         <class name>.update(<id>, <attribute name>, <attribute value>)
         <class name>.update(<id>, <dictionary representation)
+
+        Description:
+            Creates a list representations of functional models
+            Then use the functional methods to implement user
+            commands
 
         """
         names = ["BaseModel", "User", "State", "City", "Amenity",
