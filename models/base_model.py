@@ -9,16 +9,31 @@ import models
 
 
 class BaseModel:
-    """Custom base model class"""
+    """Custom base for all the classes in the AirBnb console project
+
+    Arttributes:
+        id(str): handles unique user identity
+        created_at: assigns current datetime
+        updated_at: updates current datetime
+
+    Methods:
+        __str__: prints the class name, id, and creates dictionary
+        representations of the input values
+        save(self): updates instance arttributes with current datetime
+        to_dict(self): returns the dictionary values of the instance obj
+
+    """
 
     def __init__(self, *args, **kwargs):
-        """Public instance artributes
+        """Public instance artributes initialization
+        after creation
 
         Args:
-            *args(args): input arguments
-            **kwargs(kwargs): input arguments
+            *args(args): arguments
+            **kwargs(dict): attrubute values
 
         """
+        DATE_TIME_FORMAT = '%Y-%m-%dT%H:%M:%S.%f'
         if not kwargs:
             self.id = str(uuid4())
             self.created_at = datetime.utcnow()
@@ -27,31 +42,38 @@ class BaseModel:
         else:
             for key, value in kwargs.items():
                 if key in ("updated_at", "created_at"):
-                    date = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
-                    setattr(self, key, date)
-                elif key[0] == "_":
-                    setattr(self, key, value)
+                    self.__dict__[key] = datetime.strptime(
+                        value, DATE_TIME_FORMAT)
+                elif key[0] == "id":
+                    self.__dict__[key] = str(value)
+                else:
+                    self.__dict__[key] = value
 
     def __str__(self):
-        """String method for base class"""
+        """
+        Returns string representation of the class
+        """
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
     def save(self):
-        """Updates the public instance attribute
-        updated_at with the current datetime
-
+        """
+        Updates the public instance attribute:
+        'updated_at' - with the current datetime
         """
         self.updated_at = datetime.utcnow()
         models.storage.save()
 
     def to_dict(self):
-        """Method returns a dictionary containing all 
-        keys/values of __dict__ instance
-
         """
-        my_dict = dict(self.__dict__)
-        my_dict['__class__'] = self.__class__.__name__
-        my_dict['created_at'] = datetime.isoformat(self.created_at)
-        my_dict['updated_at'] = datetime.isoformat(self.updated_at)
-        return my_dict
+        Method returns a dictionary containing all 
+        keys/values of __dict__ instance
+        """
+        map_objects = {}
+        for key, value in self.__dict__.items():
+            if key == "created_at" or key == "updated_at":
+                map_objects[key] = value.isoformat()
+            else:
+                map_objects[key] = value
+        map_objects["__class__"] = self.__class__.__name__
+        return map_objects
