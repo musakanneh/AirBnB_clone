@@ -29,7 +29,7 @@ class TestBaseModel(unittest.TestCase):
         Tests basic imputs for the BaseModel class
         """
         my_model = BaseModel()
-        my_model.name = "Holberton"
+        my_model.name = "ALX"
         my_model.number = 89
         self.assertEqual([my_model.name, my_model.number], ["ALX", 89])
 
