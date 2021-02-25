@@ -17,7 +17,9 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """Custom console class"""
+    """
+    Custom console class
+    """
 
     prompt = '(hbnb) '
 
@@ -31,7 +33,6 @@ class HBNBCommand(cmd.Cmd):
         Description:
             Displays output to the use based on
             the input commands. 
-
         """
         classes = ["BaseModel", "User", "State", "City",
                    "Amenity", "Place", "Review"]
@@ -82,7 +83,9 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, line):
-        """Quits command interpreter with ctrl+d"""
+        """
+        Quits command interpreter with ctrl+d
+        """
         return True
 
     def do_create(self, line):
@@ -92,7 +95,6 @@ class HBNBCommand(cmd.Cmd):
         Args:
             to enter with command: <class name>
             Example: 'create User'
-
         """
         if (self.my_errors(line, 4) == 1):
             return
@@ -145,7 +147,6 @@ class HBNBCommand(cmd.Cmd):
         Args:
             line(args): to enter with command: <class name> <id>
             Example: 'destroy User 1234-1234-1234'
-
         """
         if (self.my_errors(line, 2) == 1):
             return
@@ -183,7 +184,6 @@ class HBNBCommand(cmd.Cmd):
             line(args): receives the commands:
             <class name> <id> <attribute name> "<attribute value>"
             Example: 'update User 1234-1234-1234 my_name "Bob"'
-
         """
         if (self.my_errors(line, 4) == 1):
             return
@@ -213,7 +213,9 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def my_count(self, class_n):
-        """Method counts instances of a certain class"""
+        """
+        Method counts instances of a certain class
+        """
         count_instance = 0
         for instance_object in storage.all().values():
             if instance_object.__class__.__name__ == class_n:
