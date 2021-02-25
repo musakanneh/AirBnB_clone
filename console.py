@@ -86,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, line):
-        """ Creates a new instance of @cls_name class,
+        """Creates a new instance of @cls_name class,
         and prints the new instance's ID.
 
         Args:
@@ -158,9 +158,9 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, line):
-        """ Shows all instances, or instances of a certain class
+        """Shows all instances, or instances of a certain class
 
-        Args(optional): 
+        Args: 
             line(args): enter with command (optional): <class name>
             Example: 'all' OR 'all User'
 
@@ -172,7 +172,8 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         if (self.my_errors(line, 1) == 1):
             return
-        print([str(v) for v in d.values() if v.__class__.__name__ == args[0]])
+        print([str(v) for v in d.values()
+               if v.__class__.__name__ == args[0]])
 
     def do_update(self, line):
         """Updates an instance based on the class name
@@ -214,8 +215,8 @@ class HBNBCommand(cmd.Cmd):
     def my_count(self, class_n):
         """Method counts instances of a certain class"""
         count_instance = 0
-        for o in storage.all().values():
-            if o.__class__.__name__ == class_n:
+        for instance_object in storage.all().values():
+            if instance_object.__class__.__name__ == class_n:
                 count_instance += 1
         print(count_instance)
 
@@ -231,7 +232,7 @@ class HBNBCommand(cmd.Cmd):
         Description:
             Creates a list representations of functional models
             Then use the functional methods to implement user
-            commands
+            commands, by validating all the input commands
 
         """
         names = ["BaseModel", "User", "State", "City", "Amenity",

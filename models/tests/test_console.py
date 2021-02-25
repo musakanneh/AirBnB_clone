@@ -2,8 +2,8 @@
 """
 A test file to test the console for the hbnb website
 """
-
 import unittest
+from console import HBNBCommand
 
 
 class TestConsole(unittest.TestCase):
