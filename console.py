@@ -3,10 +3,11 @@
 The console v: 0.0.1
 Contains the entry point of the command interpreter
 """
+
 import cmd
 import json
 import re
-from models import storage
+# from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -32,7 +33,8 @@ class HBNBCommand(cmd.Cmd):
 
         Description:
             Displays output to the use based on
-            the input commands. 
+            the input commands.
+
         """
         classes = ["BaseModel", "User", "State", "City",
                    "Amenity", "Place", "Review"]
@@ -75,11 +77,15 @@ class HBNBCommand(cmd.Cmd):
         return 0
 
     def handle_empty_line(self, line):
-        """Eliminates empty lines"""
+        """
+        Eliminates empty lines
+        """
         return False
 
     def do_quit(self):
-        """Handles the 'quit' command"""
+        """
+        Handles the 'quit' command
+        """
         return True
 
     def do_EOF(self, line):
@@ -95,6 +101,7 @@ class HBNBCommand(cmd.Cmd):
         Args:
             to enter with command: <class name>
             Example: 'create User'
+
         """
         if (self.my_errors(line, 4) == 1):
             return
@@ -147,6 +154,7 @@ class HBNBCommand(cmd.Cmd):
         Args:
             line(args): to enter with command: <class name> <id>
             Example: 'destroy User 1234-1234-1234'
+
         """
         if (self.my_errors(line, 2) == 1):
             return
@@ -184,6 +192,7 @@ class HBNBCommand(cmd.Cmd):
             line(args): receives the commands:
             <class name> <id> <attribute name> "<attribute value>"
             Example: 'update User 1234-1234-1234 my_name "Bob"'
+
         """
         if (self.my_errors(line, 4) == 1):
             return

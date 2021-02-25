@@ -6,7 +6,9 @@ Test suits for base model
 import os
 import re
 import json
+import uuid
 import unittest
+from time import sleep
 from datetime import datetime
 from models.base_model import BaseModel
 
@@ -15,6 +17,12 @@ class TestBaseModel(unittest.TestCase):
     """
     Tests attributes of the base model
     """
+
+    def setUp(self):
+        """
+        Classes needed for testing
+        """
+        pass
 
     def test_basic(self):
         """
@@ -25,15 +33,6 @@ class TestBaseModel(unittest.TestCase):
         my_model.number = 89
         self.assertEqual([my_model.name, my_model.number], ["ALX", 89])
 
-    def test_init(self):
-        """
-        Tests if created_at, update_at and id exists
-        """
-        test_init_model = BaseModel
-        self.assertTrue(hasattr(test_init_model, "id"))
-        self.assertTrue(hasattr(test_init_model, "updated_at"))
-        self.assertTrue(hasattr(test_init_model, "created_at"))
 
-
-if __name__ == '__main__':
-    unittest.main()
+# if __name__ == '__main__':
+#     unittest.main()
