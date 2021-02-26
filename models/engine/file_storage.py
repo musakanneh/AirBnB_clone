@@ -3,21 +3,24 @@
 Module file_storage serializes and
 deserializes JSON types
 """
+
 import json
 from models.base_model import BaseModel
 from models.user import User
 
 
 class FileStorage:
-    """Custom class for file storage"""
+    """
+    Custom class for file storage
+    """
 
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """Returns dictionary representation of
+        """
+        Returns dictionary representation of
         all objects
-
         """
         return self.__objects
 
@@ -32,18 +35,18 @@ class FileStorage:
         self.__objects[object.__class__.__name__ + '.' + str(object)] = object
 
     def save(self):
-        """serializes __objects to the JSON file
+        """
+        serializes __objects to the JSON file
         (path: __file_path)
-
         """
         with open(self.__file_path, 'w+') as f:
             json.dump({k: v.to_dict() for k, v in self.__objects.items()
-                        }, f)
+                       }, f)
 
     def reload(self):
-        """deserializes the JSON file to __objects, if the JSON
+        """
+        deserializes the JSON file to __objects, if the JSON
         file exists, otherwise nothing happens)
-
         """
         try:
             with open(self.__file_path, 'r') as f:

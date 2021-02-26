@@ -197,7 +197,7 @@ class HBNBCommand(cmd.Cmd):
         if (self.my_errors(line, 4) == 1):
             return
         args = line.split()
-        d = storage.all()
+        # d = storage.all()
         for i in range(len(args[1:]) + 1):
             if args[i][0] == '"':
                 args[i] = args[i].replace('"', "")
@@ -219,7 +219,7 @@ class HBNBCommand(cmd.Cmd):
                 print("Entered wrong value type")
                 return
         setattr(d[key], attr_k, attr_v)
-        storage.save()
+        # storage.save()
 
     def my_count(self, class_n):
         """
