@@ -6,7 +6,6 @@ Custom base class for the entire project
 from uuid import uuid4
 from datetime import datetime
 import models
-from models.__init__ import storage
 
 class BaseModel:
     """Custom base for all the classes in the AirBnb console project
