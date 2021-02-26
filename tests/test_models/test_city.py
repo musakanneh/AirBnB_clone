@@ -2,6 +2,7 @@
 """
 Test suits for amenities
 """
+
 import os
 import models
 import unittest
@@ -9,7 +10,7 @@ from datetime import datetime
 from models.base_model import BaseModel
 
 
-class TestAmenity(unittest.TestCase):
+class TestCity(unittest.TestCase):
     """
     Tests for amenities
     """

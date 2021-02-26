@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Test suits for base model
+Test suits for the base model
 """
 
 import os
@@ -31,8 +31,15 @@ class TestBaseModel(unittest.TestCase):
         my_model = BaseModel()
         my_model.name = "ALX"
         my_model.number = 89
-        self.assertEqual([my_model.name, my_model.number], ["ALX", 89])
+        self.assertEqual([my_model.name, my_model.number],
+                         ["ALX", 89])
+
+    def test_datetime(self):
+        """
+        Tests for correct datetime format
+        """
+        pass
 
 
-# if __name__ == '__main__':
-#     unittest.main()
+if __name__ == '__main__':
+    unittest.main()
