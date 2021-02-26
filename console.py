@@ -8,7 +8,7 @@ import cmd
 import json
 import re
 import models
-# from models import storage
+from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -192,7 +192,7 @@ class HBNBCommand(cmd.Cmd):
         if (self.my_errors(line, 4) == 1):
             return
         args = line.split()
-        # d = storage.all()
+        d = storage.all()
         for i in range(len(args[1:]) + 1):
             if args[i][0] == '"':
                 args[i] = args[i].replace('"', "")
@@ -214,7 +214,7 @@ class HBNBCommand(cmd.Cmd):
                 print("Entered wrong value type")
                 return
         setattr(d[key], attr_k, attr_v)
-        # storage.save()
+        storage.save()
 
     def my_count(self, class_n):
         """

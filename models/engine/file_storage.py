@@ -19,8 +19,7 @@ class FileStorage:
 
     def all(self):
         """
-        Returns dictionary representation of
-        all objects
+        Returns dictionary representation of all objects
         """
         return self.__objects
 

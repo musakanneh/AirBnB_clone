@@ -6,7 +6,7 @@ Custom base class for the entire project
 from uuid import uuid4
 from datetime import datetime
 import models
-
+from models.__init__ import storage
 
 class BaseModel:
     """Custom base for all the classes in the AirBnb console project
@@ -38,7 +38,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.utcnow()
             self.updated_at = datetime.utcnow()
-            # models.storage.new(self)
+            models.storage.new(self)
         else:
             for key, value in kwargs.items():
                 if key in ("updated_at", "created_at"):
