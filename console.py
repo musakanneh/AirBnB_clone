@@ -7,6 +7,7 @@ Contains the entry point of the command interpreter
 import cmd
 import json
 import re
+import models
 # from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -82,9 +83,12 @@ class HBNBCommand(cmd.Cmd):
         """
         return False
 
-    def do_quit(self):
-        """
-        Handles the 'quit' command
+    def do_quit(self, line):
+        """Handles the 'quit' command
+
+        Args:
+            line(args): input argument for quiting
+            the terminal
         """
         return True
 
