@@ -89,12 +89,17 @@ class HBNBCommand(cmd.Cmd):
         Args:
             line(args): input argument for quiting
             the terminal
+
         """
         return True
 
     def do_EOF(self, line):
-        """
-        Quits command interpreter with ctrl+d
+        """Quits command interpreter with ctrl+d
+
+         Args:
+            line(args): input argument for quiting
+            the terminal
+
         """
         return True
 
@@ -103,37 +108,23 @@ class HBNBCommand(cmd.Cmd):
         and prints the new instance's ID.
 
         Args:
-            to enter with command: <class name>
+            line(args): Arguments to enter with command: <class name>
             Example: 'create User'
 
         """
-        if (self.my_errors(line, 4) == 1):
+        if (self.my_errors(line, 1) == 1):
             return
-        args = line.split()
-        d = storage.all()
-        for i in range(len(args[1:]) + 1):
-            if args[i][0] == '"':
-                args[i] = args[i].replace('"', "")
-        key = args[0] + '.' + args[1]
-        attr_k = args[2]
-        attr_v = args[3]
-        try:
-            if attr_v.isdigit():
-                attr_v = int(attr_v)
-            elif float(attr_v):
-                attr_v = float(attr_v)
-        except ValueError:
-            pass
-        class_attr = type(d[key]).__dict__
-        if attr_k in class_attr.keys():
-            try:
-                attr_v = type(class_attr[attr_k])(attr_v)
-            except Exception:
-                print("Entered wrong value type")
-                return
-        setattr(d[key], attr_k, attr_v)
-        storage.save()
-        print(object.id)
+        args = line.split(" ")
+
+        """
+        args[0] contains class name, create new instance
+        of that class updates 'updated_at' attribute,
+        and saves into JSON file
+        """
+        obj = eval(args[0])()
+        obj.save()
+
+        print(obj.id)
 
     def do_show(self, line):
         """Prints a string representation of an instance.
